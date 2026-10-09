@@ -1,0 +1,55 @@
+/*
+ * Embedded C RTL note: enable in Obsidian Settings > Appearance > CSS snippets
+ * Applies ONLY to notes with frontmatter: cssclasses: [embedded-c-rtl]
+ * Arabic prose RTL, English/code kept naturally LTR and isolated.
+ */
+.markdown-preview-view.embedded-c-rtl,
+.markdown-source-view.embedded-c-rtl .cm-content {
+  direction: rtl;
+  text-align: right;
+}
+
+.markdown-preview-view.embedded-c-rtl :is(p, li, h1, h2, h3, h4, h5, h6, blockquote),
+.markdown-source-view.embedded-c-rtl .cm-line:not(.HyperMD-codeblock) {
+  direction: rtl;
+  text-align: right;
+  unicode-bidi: plaintext;
+}
+
+.markdown-preview-view.embedded-c-rtl :is(pre, pre code, .el-pre),
+.markdown-source-view.embedded-c-rtl .cm-line.HyperMD-codeblock,
+.markdown-source-view.embedded-c-rtl .cm-line.HyperMD-codeblock-begin,
+.markdown-source-view.embedded-c-rtl .cm-line.HyperMD-codeblock-end {
+  direction: ltr !important;
+  text-align: left !important;
+  unicode-bidi: isolate !important;
+}
+
+.markdown-preview-view.embedded-c-rtl :not(pre) > code,
+.markdown-preview-view.embedded-c-rtl li code,
+.markdown-preview-view.embedded-c-rtl td code {
+  direction: ltr;
+  unicode-bidi: isolate;
+  display: inline-block;
+  text-align: left;
+}
+
+.markdown-preview-view.embedded-c-rtl table {
+  direction: rtl;
+  text-align: right;
+}
+
+.markdown-preview-view.embedded-c-rtl :is(th, td) {
+  direction: rtl;
+  text-align: right;
+  vertical-align: top;
+}
+
+.markdown-preview-view.embedded-c-rtl .callout {
+  direction: rtl;
+  text-align: right;
+}
+
+.markdown-source-view.embedded-c-rtl .cm-scroller {
+  direction: rtl;
+}

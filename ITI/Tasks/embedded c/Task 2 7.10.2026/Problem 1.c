@@ -20,6 +20,7 @@ int main()
 
         if(scanf("%d",&last) != 1)
         {
+            
             printf("invalid input");
             flag=1;
         }

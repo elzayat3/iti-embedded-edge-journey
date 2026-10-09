@@ -4,49 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "c4e4eeda08ca1f86",
+        "id": "b74252632b35f3df",
         "type": "tabs",
         "children": [
           {
-            "id": "ff7cd99b0db00bc2",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "zzz/git3.jpg"
-              },
-              "icon": "lucide-image",
-              "title": "git3"
-            }
-          },
-          {
-            "id": "9f19a7125ddf8b02",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "zzz/git2 1.jpg"
-              },
-              "icon": "lucide-image",
-              "title": "git2 1"
-            }
-          },
-          {
-            "id": "0a775c5754e0ae92",
+            "id": "1aa1bbec7490a902",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "C, embedded C/2-Functions,Strings,Pointers.md",
+                "file": "C, embedded C/2-Functions, Arrays, Strings & Pointers.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2-Functions,Strings,Pointers"
+              "title": "2-Functions, Arrays, Strings & Pointers"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -213,10 +188,18 @@
       "bases:Create new base": false
     }
   },
-  "active": "0a775c5754e0ae92",
+  "active": "1aa1bbec7490a902",
   "lastOpenFiles": [
-    "C, embedded C/1-Introduction.md",
-    "C, embedded C/2-Functions,Strings,Pointers.md",
+    "C, embedded C/1-Embedded C Fundamentals.md",
+    "C, embedded C/2-Functions, Arrays, Strings & Pointers.md",
+    "Version Control/1-Introduction.md",
+    "file:C:/Users/TECHNO ZONE/Downloads/Embedded_C_Obsidian_Notes_RTL/Embedded_C_Study_Notes_Obsidian.md",
+    "Embedded system/2-Memory arch.md",
+    "file:C:/Users/TECHNO ZONE/Downloads/Embedded_C_Fundamentals_Readable_RTL.md",
+    "file:C:/Users/TECHNO ZONE/Downloads/1-Embedded%20C%20Fundamentals%20-%20Inline.md",
+    "Embedded system/1-Introduction (ARM Architecture).md",
+    "Embedded system",
+    "C, embedded C/Untitled.md",
     "Version Control/0-Introduction.md",
     "C, embedded C",
     "Untitled.md",
