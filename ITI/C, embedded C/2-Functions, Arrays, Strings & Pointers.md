@@ -874,15 +874,130 @@ int main(void) {
 > [!warning] ‏انتبه لـ `strtok`
 > ‏لا تستخدمها مباشرةً على **String Literal** لأنها بتعدّل المحتوى. وكمان بتستخدم حالة داخلية؛ لو محتاج معالجة مستقلة متزامنة، لازم تختار بديل مناسب للمنصة.
 
+
+> [!important] Understanding `strtok(NULL, ",")`
+>
+> الدالة `strtok()` بتستخدم علشان نقسم الـ **String** لأجزاء أصغر اسمها **Tokens** بناءً على فاصل معين (**Delimiter**).
+>
+> ```c
+> token = strtok(NULL, ",");
+> ```
+>
+> **شرح السطر:**
+>
+> - **`token`**: Pointer بيخزن عنوان بداية الـ Token الجديدة.
+> - **`strtok()`**: الدالة المسؤولة عن تقسيم الـ String.
+> - **`NULL`**: معناها كمّل من المكان اللي وقفت عنده في آخر استدعاء، مش ابدأ من الأول.
+> - **`","`**: الفاصل المستخدم بين الكلمات هو الـ Comma.
+>
+> الدالة بترجع Pointer لأول حرف في الـ Token التالية، ولو مفيش Tokens تانية بترجع `NULL`.
+
+### Practical Example
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    char text[] = "Ahmed,Mohamed,Ali";
+
+    char *token = strtok(text, ",");
+
+    printf("%s\n", token);
+
+    token = strtok(NULL, ",");
+    printf("%s\n", token);
+
+    token = strtok(NULL, ",");
+    printf("%s\n", token);
+
+    return 0;
+}
+```
+
+**Output:**
+
+```text
+Ahmed
+Mohamed
+Ali
+```
+
+### Step-by-Step Explanation
+
+1. أول استدعاء:
+
+   `strtok(text, ",")`
+
+   بيبدأ تقسيم الـ String ويرجع أول Token وهي `Ahmed`.
+
+2. تاني استدعاء:
+
+   `strtok(NULL, ",")`
+
+   بيكمّل من آخر مكان وقف عنده ويرجع `Mohamed`.
+
+3. تالت استدعاء:
+
+   `strtok(NULL, ",")`
+
+   بيرجع `Ali`.
+
+4. لو استدعينا الدالة مرة كمان هترجع `NULL`، لأن مفيش Tokens متبقية.
+
+> [!tip] Why Do We Use NULL?
+>
+> بنستخدم `NULL` علشان الدالة تحتفظ بمكان التقسيم السابق وتكمّل منه، بدل ما نبدأ تقسيم نفس الـ String من الأول كل مرة.
+>
+> وده مفيد جدًا لما نحتاج نقسم String فيها عدد غير معروف من الكلمات.
+
+### Using `strtok()` With a While Loop
+
+```c
+char text[] = "C,Python,Java";
+
+char *token = strtok(text, ",");
+
+while (token != NULL)
+{
+    printf("%s\n", token);
+
+    token = strtok(NULL, ",");
+}
+```
+
+**الفكرة:**
+
+- أول استدعاء بيجيب أول Token.
+- الـ `while` بتفضل شغالة طول ما فيه Tokens.
+- في كل Iteration بنستخدم `strtok(NULL, ",")` علشان نجيب الـ Token التالية.
+- لما الدالة ترجع `NULL`، الـ Loop بتقف.
+
+> [!warning] Important Notes
+>
+> - لازم تبدأ بـ `strtok(text, ",")` قبل ما تستخدم `strtok(NULL, ",")` لتكملة التقسيم.
+> - الدالة بتعدّل الـ Original String وبتستبدل الـ Delimiters اللي بتلاقيها بـ `'\0'`.
+> - استخدم Character Array قابلة للتعديل بدل String Literal.
+> - الدالة بتتخطّى الفواصل المتكررة، وبالتالي مش بترجع Empty Tokens بينها.
+> - `strtok()` بتحتفظ بحالة داخلية، لذلك مش مناسبة لتقسيم أكتر من String بالتداخل بالطريقة العادية.
+
+> [!summary] Key Takeaway
+>
+> **`strtok(text, ",")`** → Start Tokenization.
+>
+> **`strtok(NULL, ",")`** → Get Next Token.
+>
+> **Return `NULL`** → No More Tokens.
 ## ‏Memory Operations — عمليات على البايتات
 
 ‏الدوال الجاية موجودة برضه في `string.h`، لكنها بتتعامل مع **عدد بايتات**، مش شرط C Strings.
 
-| الدالة | المعنى | أهم نقطة |
-|---|---|---|
-| `memcpy(dest, src, n)` | ‏نسخ `n` بايت | ‏المناطق **مينفعش تتداخل** |
-| `memmove(dest, src, n)` | ‏نسخ `n` بايت | ‏بتتعامل مع **التداخل** بأمان |
-| `memcmp(a, b, n)` | ‏مقارنة أول `n` بايت | ‏ناتج سالب/صفر/موجب |
+| الدالة                   | المعنى                         | أهم نقطة                                      |
+| ------------------------ | ------------------------------ | --------------------------------------------- |
+| `memcpy(dest, src, n)`   | ‏نسخ `n` بايت                  | ‏المناطق **مينفعش تتداخل**                    |
+| `memmove(dest, src, n)`  | ‏نسخ `n` بايت                  | ‏بتتعامل مع **الoverlapping** بأمان           |
+| `memcmp(a, b, n)`        | ‏مقارنة أول `n` بايت           | ‏ناتج سالب/صفر/موجب                           |
 | `memset(dest, value, n)` | ‏ملء `n` بايت بقيمة بايت معينة | ‏لا تضبط كل عنصر `int` إلى قيمة عددية عشوائية |
 
 ```c

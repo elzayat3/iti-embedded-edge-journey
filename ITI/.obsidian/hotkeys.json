@@ -1,0 +1,20 @@
+{
+  "obsidian-admonition:insert-tip-with-title": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "T"
+    }
+  ],
+  "obsidian-admonition:insert-warning-with-title": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "W"
+    }
+  ]
+}

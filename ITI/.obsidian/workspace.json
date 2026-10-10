@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "C, embedded C/2-Functions, Arrays, Strings & Pointers.md",
+                "file": "C, embedded C/1-Embedded C Fundamentals.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2-Functions, Arrays, Strings & Pointers"
+              "title": "1-Embedded C Fundamentals"
             }
           }
         ]
@@ -190,8 +190,10 @@
   },
   "active": "1aa1bbec7490a902",
   "lastOpenFiles": [
-    "C, embedded C/1-Embedded C Fundamentals.md",
+    "C, embedded C/3- Arrays with Pointers & Complex Declarations in C.md",
+    "C, embedded C/4-.md",
     "C, embedded C/2-Functions, Arrays, Strings & Pointers.md",
+    "C, embedded C/1-Embedded C Fundamentals.md",
     "Version Control/1-Introduction.md",
     "file:C:/Users/TECHNO ZONE/Downloads/Embedded_C_Obsidian_Notes_RTL/Embedded_C_Study_Notes_Obsidian.md",
     "Embedded system/2-Memory arch.md",
@@ -199,7 +201,6 @@
     "file:C:/Users/TECHNO ZONE/Downloads/1-Embedded%20C%20Fundamentals%20-%20Inline.md",
     "Embedded system/1-Introduction (ARM Architecture).md",
     "Embedded system",
-    "C, embedded C/Untitled.md",
     "Version Control/0-Introduction.md",
     "C, embedded C",
     "Untitled.md",
