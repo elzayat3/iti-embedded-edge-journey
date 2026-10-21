@@ -404,9 +404,357 @@ Settings → Developer settings → Personal access tokens → Fine-grained toke
 
 علشان يظهرك الcommand كده اعمل tab 
 
+![[Pasted image 20261019194952.png]]
+
+افتح ده بNOTEPAD++ هتلاقي الPublic key اعمله نسخ وحطه في الgithub 
+
+![[Pasted image 20261019195141.png]]
+
+في الLinux مفيش command فيه space
+
+## 3-git commands
+
+![[Pasted image 20261019195911.png]]
+
+git add . all files to staging phased
+
+![[Pasted image 20261019234620.png]]
+
+
+اعمل كده وانت بتثبت ال VS Code 
+
+![[Pasted image 20261019235435.png]]
+
+ال untracked file ده ملف جديد اصلا لسه معمول فهو مش متابعه من الاول اصلا مش بيقلك ايه السطر اللي اتغير لانه هو مش عارف ايه الملف ده اصلا 
+
+علشان يبقى tracked لازم ادخله مرحلة الstaging 
+
+التغير التاني هيكون في ملف موجود عندي اصلا هيطلعلي change in tracked file 
+
+الgit clone بتحصل مره وحده في الproject كله 
+
+### 1. يعني إيه `git revert`؟
+
+الأمر `git revert` بيستخدم علشان تلغي التغييرات اللي عملها Commit معين، من غير ما تمسح الـ Commit نفسه من الـ History.
+
+يعني بدل ما Git يمسح الـ Commit الغلط، بيعمل Commit جديد يعكس التغييرات بتاعته.
+
+![[Pasted image 20261020000452.png]]
+
+
+![[Pasted image 20261020000516.png]]
+
+النتيجة:
+
+- A موجود.
+    
+- B موجود.
+    
+- C موجود في الـ History رغم إنه غلط.
+    
+- D موجود، وبيعكس التغييرات اللي C عملها.
+
+![[Pasted image 20261020000611.png]]
+
+![[Pasted image 20261020000652.png]]
+
+![[Pasted image 20261020000716.png]]
+
+`git revert` بتعكس التغييرات اللي عملها الـ Commit اللي إنت اديتها الـ Hash بتاعه.
+
+يعني:
+
+- لو الـ Commit ضاف سطر → `revert` هتحذف السطر.
+    
+- لو الـ Commit حذف سطر → `revert` هترجع السطر.
+    
+- لو الـ Commit عدّل سطر → `revert` هتحاول ترجعه لقيمته قبل التعديل.
+خد بالك من نقطتين مهمين:
+
+1. الـ `revert` مش بتمسح الـ Commit نفسه من الـ History.
+    
+2. لو Commit أحدث غيّر نفس السطور، ممكن يحصل `Conflict` وتحتاج تحله.
+    
+
+الخلاصة: `git revert` = إلغاء تأثير Commit معين، مش حذف الـ Commit نفسه.
+
+1-git log --oneline
+
+بيستخدم علشان يعرضلك الـ Commits اللي اتعملت في المشروع، وكل Commit في سطر واحد بس.
+
+- `git log`: بيعرض تاريخ الـ Commits بتاعت المشروع.
+    
+- `--oneline`: بيختصر عرض كل Commit في سطر واحد بدل التفاصيل الكتير.
+
+بتظهر بالشكل ده : 
+a1b2c3d (HEAD -> main) Add UART driver
+e4f5g6h Fix array bug
+i7j8k9l Initial commit
+
+كل سطر فيه حاجتين أساسيتين:
+
+1. Commit Hash: زي `a1b2c3d`، وده معرّف مختصر للـ Commit.
+    
+2. Commit Message: زي `Add UART driver`، وده وصف التغييرات اللي اتعملت.
+    
+
+أما `(HEAD -> main)` فمعناها إنك حاليًا على Branch اسمه `main`، والـ `HEAD` بيشير لآخر Commit عليه.
 
 
 
+git commit -m : m for message 
+
+
+## 4-Server
+
+![[Pasted image 20261021103012.png]]
+
+ال root هوا الinitial commit الشجرة دي عبارة عن linked list مينفعش تروح تمسح commit من النص 
+
+مينفعش root وحده يكون ليها اتنين reference 
+
+خد بالك انت قبل ما تعمل push اول حاجه بيعمل في الbackground بيعمل git fetch  ده بيشوف ايه الجديد اللي حصل بيعمل fetch information هو مجبش الinformation بس بيعرف ايه اللي موجود على الserver 
+
+الgit push -f ده هضيف الحاجات اللي انت عملتها كلها ويرمي القديم 
+
+![[Pasted image 20261021104126.png]]
+
+![[Pasted image 20261021105313.png]]
+
+الفكرة من الbranch نحل الconflict مش عايز كل ما اعمل push اعمل pull 
+
+كل branch لوحده حرفيا علشان كده لو تلاحظ 3 و 3 و 4 و 4 على الbranch الاول والتاني 
+
+الbranch الميزة منه لما اجي اضيف feature جديدة اول واحد هيرجع على الmain ده اللي مش هيحصله conflict 
+
+الpeer review فشوف الbranch التعديلات اللي عليه كويسه ولا لا ومش هيعمل merge غير لما يراجع عليه الاول 
+
+![[Pasted image 20261021105929.png]]
+
+create branch by checkout 
+
+git push -u origin (Branch name): push the branch for the first time 
+
+مفيش حد بيعمل resolve لل conflict على الlocal 
+
+![[Pasted image 20261021121630.png]]
+
+الmerge بيعمل commit جديدة على طول 
+
+![[Pasted image 20261021121830.png]]
 
 
 
+بيسهل الdebug والinitialization لل Branch 
+
+بدل ما تعمل `merge` بين فرعين، الـ `rebase` بياخد الـ commits بتاعت فرعك ويحطها بعد آخر commit موجودة في الفرع التاني، كأنك بدأت شغلك من أحدث نسخة منه.
+
+![[Pasted image 20261021122254.png]]
+
+git switch feature
+git rebase main
+
+![[Pasted image 20261021122419.png]]
+
+![[Pasted image 20261021122545.png]]
+
+`git rebase X` معناها: خد الـ commits الخاصة بالفرع اللي أنا واقف عليه، وحطها بعد آخر commit في X.
+
+git pull --prune :
+
+معناه ببساطة: هات آخر التحديثات من GitHub، وامسح عندي أسماء الفروع الremote اللي اتحذفت من GitHub.
+
+![[Pasted image 20261021123718.png]]
+
+![[Pasted image 20261021123736.png]]
+
+![[Pasted image 20261021123839.png]]
+
+مهم: لو إنت عامل فرع محلي بنفس الاسم `feature-B` وعليه شغلك، الـ `--prune` مش هيمسحه.
+
+لو حد مسح فرع من GitHub وإنت عملت `git pull --prune`، إيه اللي هيتمسح من الكمبيوتر؟
+
+الـ Remote-tracking reference القديم
+
+مش هيمسح الفرق الlocal خالص 
+
+- `--prune`: مش فارق معاه إنت واقف على أنهي Branch. هينضّف مراجع الـ Remote Branches المحذوفة.
+    
+- `pull`: فارق معاه جدًا! لأنه هيجيب التحديثات ويدمجها في الـ Branch اللي إنت واقف عليه، حسب الـ upstream والإعدادات.
+
+![[Pasted image 20261021124245.png]]
+
+![[Pasted image 20261021124305.png]]
+
+![[Pasted image 20261021124548.png]]
+
+![[Pasted image 20261021124624.png]]
+
+يعني:
+
+1. Pull: هيحدّث الـ `main` بتاعك لحد `D`، بافتراض إن التحديث ينفع يتعمل Fast-forward.
+    
+2. Prune: هيمسح المرجع القديم `origin/feature`؛ لأن الفرع اتحذف من GitHub.
+    
+
+لكن لو عندك Local Branch اسمه `feature`، هيفضل موجود ومش هيتمسح.
+
+### أهم نقطة
+
+إنت كده عملت عمليتين مختلفتين بأمر واحد:
+
+- حدّثت الـ `main` المحلي.
+    
+- نضّفت مراجع الفروع المحذوفة من GitHub.
+
+لو إنت عايز تمسح مراجع الفروع المحذوفة من GitHub، لكن مش عايز تحدّث الـ `main` المحلي بتاعك، تستخدم أنهي أمر؟
+
+git fetch --prune
+
+![[Pasted image 20261021124913.png]]
+
+![[Pasted image 20261021124940.png]]
+
+![[Pasted image 20261021125000.png]]
+
+الخلاصة: الـ `--prune` مش بيمسح الفرع المحلي حتى لو إنت واقف عليه. والـ `pull` مش هيقدر يسحب من فرع بعيد اتحذف.
+
+![[Pasted image 20261021125303.png]]
+
+لحد دلوقت هو لسه موجود على الlocal 
+
+![[Pasted image 20261021125410.png]]
+
+![[Pasted image 20261021125429.png]]
+
+
+git add . && git commit -m "task" && git push
+
+![[Pasted image 20261021130201.png]]
+
+
+إنت عندك تعديلات من غير Commit على `feature`، والملفات اللي عدلتها مختلفة أصلًا بين `feature` و `main`.
+
+![[Pasted image 20261021130359.png]]
+
+الGit هيرفض الانتقال!
+
+![[Pasted image 20261021130449.png]]
+
+والنتيجة:
+
+- هتفضل واقف على `feature`.
+    
+- تعديلاتك هتفضل موجودة زي ما هي.
+    
+- مش هينتقل لـ `main`.
+لو عايز تروح `main` من غير Commit ومن غير ما تضيع شغلك:
+
+git stash
+git checkout main
+
+ولما ترجع: 
+
+git checkout feature
+git stash pop
+
+الstash هيخزن في الhard بتاعك 
+
+لو عملت git checkout -f هيعمل switch ويضيع كل تعديلاتك 
+
+زمان كانت بتروح الRAM  بس لو قفل اللابتوب هتروح دلوقت بقت في الhard 
+
+
+## 5-Worktree 
+
+![[Pasted image 20261021131348.png]]
+
+عايز اعمل اكتر من local repo من غير ما اعمل clone اكتر من مره 
+
+هنروح نعمل حاجه اسمها worktree 
+
+اول حاجه هروح اعمل clone للrepo بس ما اعمل clone بروح اكتب جوه الrepo دي git worktree add  بديها الdirectory جديدة وbranch مش محتاج انك تعمل stash لو هتنقل من repo للتانيه هنا 
+
+الفكرة ببساطة: بدل ما تفضل تعمل `checkout` وتبدّل بين الـ Branches في نفس الفولدر، Git بيسمحلك تفتح كل Branch في فولدر لوحده، والاتنين تابعين لنفس الـ Repository.
+
+![[Pasted image 20261021134711.png]]
+
+إنت دلوقتي واقف على `main`، وعدلت في `main.c` ولسه معملتش Commit.
+
+وعايز تشتغل على `feature`، من غير ما تعمل Stash ولا Commit للتعديلات الحالية.
+
+![[Pasted image 20261021134918.png]]
+
+
+![[Pasted image 20261021135027.png]]
+
+![[Pasted image 20261021135310.png]]
+
+![[Pasted image 20261021135523.png]]
+
+
+![[Pasted image 20261021135621.png]]
+
+![[Pasted image 20261021135638.png]]
+
+![[Pasted image 20261021135715.png]]
+
+كأنك بتفتح كل Branch في Folder لوحده، لكن كل الفولدرات تابعة لنفس الـ Git Repository.
+
+يعني:
+
+- تقدر تشتغل على `main` في فولدر.
+    
+- وتشتغل على `feature` في فولدر تاني.
+    
+- تعديلاتك اللي لسه معملتش لها Commit في فولدر مش هتأثر على التاني.
+    
+- الاتنين بيشاركوا نفس الـ Git History.
+
+بس خلي بالك من نقطة: إنت مش بتنقل الـ Branch نفسه لفولدر، إنت بتعمل Working Directory منفصل للـ Branch.
+
+وده معناه إنك تقدر تشتغل على فرعين في نفس الوقت من غير ما تفضل تعمل `checkout` بينهم.
+
+يعني WorkTree = Folder مستقل للشغل على Branch، داخل نفس الـ Repository
+
+طالما الـ Branch مفتوح في Worktree تاني، Git مش هيسمحلك تعمل له `checkout` في الفولدر الأساسي بشكل طبيعي
+
+![[Pasted image 20261021140406.png]]
+
+![[Pasted image 20261021140432.png]]
+
+مهم: لو في تعديلات غير محفوظة في Commit جوه `Folder2`، Git عادةً هيرفض إزالة الـ Worktree لحمايتها.
+
+الخلاصة: كل Branch بيتفتح في Worktree واحد فقط في نفس الوقت، بشكل افتراضي. لكن تقدر تنقله من Worktree للتاني لما تفضّي مكانه.
+
+![[Pasted image 20261021140659.png]]
+
+![[Pasted image 20261021140716.png]]
+
+![[Pasted image 20261021140759.png]]
+
+![[Pasted image 20261021140829.png]]
+
+![[Pasted image 20261021140910.png]]
+
+## 6-large file system 
+
+![[Pasted image 20261021141632.png]]
+
+لو انا غيرت في ملف pdf سطر واحد الgit هيقلك انت غيرت الملف كله ويرفعه كله من اول وجديد
+
+لما اعمل git clone هتلاقي الpdf مش بتنزل اصلا هتكون في second storage لكن اللي بيعمل Push لسه بيرفع عادي التعديلات 
+
+لما اعمل git lfs pull هينزل اخر التحديثات بتاع الpdf الموجودة على الrepo مش هينزل الHistory كله 
+
+ازاي بنعمل الlfs دي؟
+
+![[Pasted image 20261021142646.png]]
+
+![[Pasted image 20261021142755.png]]
+
+الأوامر دي بتخلي Git يتعامل مع الملفات المطابقة للنوعين دول باستخدام LFS.
+
+![[Pasted image 20261021142845.png]]
+
+![[Pasted image 20261021142914.png]]
