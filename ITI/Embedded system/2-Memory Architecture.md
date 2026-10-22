@@ -1,6 +1,22 @@
 
 ---
 
+## Lecture Map
+1-[[#1-introduction in Memory Architecture]]
+2-[[#2-Cortex m4]]
+3-[[#3-Floating Point Unit]]
+4-[[#4-Memory Protection Unit]]
+5-[[#5-Systick Timer]]
+6-[[#6-NVIC]]
+7-[[#7-MAC]]
+8-[[#8-Breakpoint and Watch point]]
+9-[[#9-Bus matrix]]
+10-[[#10-State & Modes]]
+11-[[#11-General Purpose Register]]
+12-[[#12-Floating Point Register & Special Register]]
+13-[[#13-Endianity]]
+
+---
 
 ## 1-introduction in Memory Architecture
 
@@ -73,7 +89,7 @@ Multiply and Accumulate
 
 يعني الضرب والتجميع، ودي عملية مهمة جدًا في الـ Digital Signal Processing (DSP).
 
-## 1. الـ MAC بتعمل إيه؟
+### 1. الـ MAC بتعمل إيه؟
 
 الـ MAC بتنفذ عمليتين:
 
@@ -114,7 +130,7 @@ OS always runs in Handler
 
 الCMSIS دي عبارة عن Library بتديك شوية drivers تعرف تشغل بيها الperipherals اللي جوه الprocessor 
 
-## 3- Floating Point Unit 
+## 3-Floating Point Unit 
 
 ![[Pasted image 20261020110701.png]]
 
@@ -124,7 +140,7 @@ OS always runs in Handler
 
 لما تتعمل H.W بتكون اسرع بكتير من الS.W
 
-## 4- Memory Protection Unit 
+## 4-Memory Protection Unit 
 
 لو حاولت اعمل Access ل Address هو حاميه هيعمل Exception 
 
@@ -132,7 +148,7 @@ OS always runs in Handler
 
 او لو عملت Configuration لل GPIO مثلا ومش عايز حد يغيرها 
 
-## 5- Systick Timer 
+## 5-Systick Timer 
 
 ![[Pasted image 20261020111807.png]]
 
@@ -146,7 +162,7 @@ OS always runs in Handler
 
 ![[Pasted image 20261020112434.png]]
 
-## 7- MAC
+## 7-MAC
 
 ![[Pasted image 20261020112752.png]]
 
@@ -184,3 +200,98 @@ OS always runs in Handler
 
 منطقة الRAM اللي في الcode دي ممكن احط فيها Instructions عادي او variable 
 
+
+## 10-State & Modes
+![[Pasted image 20261022132247.png]]
+
+الARM state بتاخد cycles كتير اوي علشان تتنفذ 
+
+الthumb الinstructions بتكون صغيره 
+
+الthumb 2 فيها الinstructions المهمه من ال32-bit 
+
+![[Pasted image 20261022133001.png]]
+
+الunprivellage مش هعرف اوصل لregister معينه جوه الprocessor 
+
+![[Pasted image 20261022133458.png]]
+
+
+## 11-General Purpose Register
+
+![[Pasted image 20261022133819.png]]
+
+![[Pasted image 20261022134352.png]]
+
+![[Pasted image 20261022134526.png]]
+
+![[Pasted image 20261022134541.png]]
+
+
+![[Pasted image 20261022135014.png]]
+
+![[Pasted image 20261022135436.png]]
+
+الترتيب اللي انا عملت بيه SAVE هعمل عكسه في الSTORE
+
+![[Pasted image 20261022140321.png]]
+
+
+لو الcaller مستخدم من r0-r3 هو المسؤول انه يعمل ليهم save مع r12 طبعا 
+
+الcallee لو هيستخدم من r4-r11 هيكون محتاج يعمل ليهم save 
+
+في الـ AAPCS (ARM Procedure Call Standard)، الـ R0–R3 اسمهم Caller-Saved Registers أو Volatile Registers.
+
+الـ Caller مسؤول يحافظ على القيم الموجودة في R0–R3 لو هيحتاجها بعد الرجوع من الـ Callee.
+
+خد بالك من أهم نقطة: حتى لو الـ Callee مش بيستخدم R0–R3 حاليًا، الـ Caller مينفعش يعتمد إن قيمتهم هتفضل محفوظة وفق الـ AAPCS، لأن الـ Callee غير ملزم يحافظ عليهم.
+
+- Caller-Saved: Save if you need the old value after the call.
+- Callee-Saved: If you modify it, restore it before returning.
+### 1. Caller-Saved (R0–R3, R12)
+
+الـ Caller بيعمل Save لما:
+
+- يكون عنده قيمة في Register.
+    
+- هيستدعي Function باستخدام `BL`.
+    
+- ويكون محتاج نفس القيمة بعد الرجوع من الـ Function.
+
+لأن الـ Callee من حقه يغير R0–R3.
+
+### 2. Callee-Saved (R4–R11، مع استثناء R9 حسب النظام)
+
+الـ Callee بيعمل Save لما:
+
+- يدخل Function.
+    
+- يكون هيغير قيمة Register من الـ Callee-Saved.
+    
+- فلازم يحفظ قيمته القديمة ويرجعها قبل `BX LR`.
+
+
+ملحوظة مهمة: الـ Caller مش لازم يحفظ كل الـ R0–R3، بيحفظ بس القيم اللي هيحتاجها بعد استدعاء الدالة.
+
+والـ Callee مش لازم يحفظ كل الـ R4–R11، بيحفظ بس اللي هيعدل عليهم.
+
+- Caller-Saved → I need this value later.
+    
+- Callee-Saved → I want to modify this register.
+
+![[Pasted image 20261022164513.png]]
+
+
+## 12-Floating Point Register & Special Register  
+
+![[Pasted image 20261022164813.png]]
+
+
+## 13-Endianity 
+
+![[Pasted image 20261022165633.png]]
+
+## 14- Bit Band Alias & Region
+
+![[Pasted image 20261022170031.png]]

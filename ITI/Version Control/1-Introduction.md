@@ -1,6 +1,16 @@
 
 ---
 
+## Lecture map
+1-[[#1-Intro in git]]
+2-[[#2-SSH vs HTTPS]]
+3-[[#3-git commands]]
+4-[[#4-Server]]
+5-[[#5-Worktree]]
+6-[[#6-large file system]]
+
+---
+
 ## 1-Intro in git
 
 الgit عبارة عن cross platform هيشتغل معاك كده كده سواء انت Linux او windows  

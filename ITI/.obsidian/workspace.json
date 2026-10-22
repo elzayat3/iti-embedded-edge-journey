@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Version Control/1-Introduction.md",
+                "file": "Embedded system/2-Memory Architecture.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1-Introduction"
+              "title": "2-Memory Architecture"
             }
           }
         ],
@@ -206,25 +206,29 @@
   },
   "active": "8715548ce904ec67",
   "lastOpenFiles": [
-    "z-Pictures/Pasted image 20261021142646.png",
-    "z-Pictures/Pasted image 20261021142914.png",
-    "z-Pictures/Pasted image 20261021142845.png",
-    "z-Pictures/Pasted image 20261021142755.png",
-    "Pasted image 20261021142914.png",
-    "Pasted image 20261021142845.png",
-    "Pasted image 20261021142755.png",
-    "Pasted image 20261021142646.png",
-    "z-Pictures/Pasted image 20261021135653.png",
-    "z-Pictures/Pasted image 20261021135638.png",
-    "z-Pictures/Pasted image 20261021135621.png",
-    "Board/3-Version control (fady)/Session 2.pdf",
-    "Embedded system/5-.md",
+    "Embedded system/3-.md",
     "Embedded system/2-Memory Architecture.md",
     "Embedded system/1-Introduction (ARM Architecture).md",
-    "Version Control/1-Introduction.md",
+    "Pasted image 20261022170031.png",
+    "Pasted image 20261022165633.png",
+    "Pasted image 20261022164813.png",
+    "Pasted image 20261022164513.png",
+    "Pasted image 20261022140321.png",
+    "Pasted image 20261022135436.png",
+    "Pasted image 20261022135014.png",
+    "Pasted image 20261022134541.png",
+    "Pasted image 20261022134526.png",
+    "Pasted image 20261022134352.png",
+    "Board/2-Embedded system (kishk)/Session 3.pdf",
     "C, embedded C/4-Struct & Union & enum.md",
-    "C, embedded C/3- Arrays with Pointers & Complex Declarations in C.md",
     "C, embedded C/5-Build process.md",
+    "C, embedded C/3- Arrays with Pointers & Complex Declarations in C.md",
+    "C++/3-.md",
+    "file:C:/Users/TECHNO ZONE/Desktop/Fady task 1/Calculator/README.md",
+    "Version Control/0-Introduction.md",
+    "Version Control/1-Introduction.md",
+    "Board/3-Version control (fady)/Session 2.pdf",
+    "Embedded system/5-.md",
     "C++/2-.md",
     "DSA/2-.md",
     "DSA/1-.md",
@@ -233,8 +237,6 @@
     "Board/8-.md",
     "C, embedded C/7-.md",
     "C, embedded C/6-.md",
-    "Version Control/0-Introduction.md",
-    "Embedded system/3-.md",
     "Embedded system/4-.md",
     "1-Tasks/embedded c/Task 4 12.10.2026 (LAB 5)/Problem_4.c",
     "C, embedded C/1-Embedded C Fundamentals.md",
@@ -246,11 +248,8 @@
     "C, embedded C/2-Functions, Arrays, Strings & Pointers.md",
     "Excalidraw",
     "C, embedded C/z-LECs.pdf",
-    "file:C:/Users/TECHNO ZONE/Downloads/Embedded_C_Obsidian_Notes_RTL/Embedded_C_Study_Notes_Obsidian.md",
-    "file:C:/Users/TECHNO ZONE/Downloads/Embedded_C_Fundamentals_Readable_RTL.md",
     "Embedded system",
     "C, embedded C",
-    "zzz",
-    "Untitled.base"
+    "zzz"
   ]
 }
